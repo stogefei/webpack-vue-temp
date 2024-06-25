@@ -15,3 +15,6 @@
     pnpm i
 
     yarn run serve
+
+### 集成Bpmn组件
+    ![alt text](image.png)
