@@ -1,0 +1,50 @@
+// @import "bpmn-js-properties-panel/dist/assets/element-templates.css";
+
+// @import "bpmn-js-properties-panel/dist/assets/properties-panel.css";
+// @import "@bpmn-io/element-template-chooser/dist/element-template-chooser.css";
+
+// @import "bpmn-js/dist/assets/bpmn-js.css";
+// @import "bpmn-js-connectors-extension/dist/connectors-extension.css";
+
+// @import "bpmn-js-bpmnlint/dist/assets/css/bpmn-js-bpmnlint.css";
+
+// @import "bpmn-js-token-simulation/assets/css/bpmn-js-token-simulation.css";
+
+@import "./bpmn-override.less";
+@import "./toolbar.less";
+@import "./designer.less";
+@import "./palette.less";
+@import "./context-pad.less";
+@import "./panel.less";
+@import "./camunda-penal.less";
+@import "./setting.less";
+@import "./contextmenu.less";
+
+
+.cloudpivot-bpmn {
+  height: 100%;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  &.designer-with-image > .main-content .designer {
+    background-repeat: no-repeat !important;
+    // background-image: url("/04.jpg") !important;
+    background-size: cover;
+  }
+  .main-content {
+    width: 100%;
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    .designer {
+      flex: 1;
+    }
+  }
+  .bjs-powered-by{
+    display: none !important;
+  }
+}

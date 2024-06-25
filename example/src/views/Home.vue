@@ -7,7 +7,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import './home.less';
-import CloudpivotBpmn from'../../../dist/index'
+import CloudpivotBpmn from'../../../dist/index';
 
 @Component({
   components: {
@@ -17,5 +17,5 @@ import CloudpivotBpmn from'../../../dist/index'
 export default class Home extends Vue {}
 </script>
 <style lang="less">
-// @import '../../../../dist/css/index.css';
+@import '../../../dist/css/main.css';
 </style>

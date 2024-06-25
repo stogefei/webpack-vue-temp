@@ -1,33 +1,26 @@
-// Generated using webpack-cli https://github.com/webpack/webpack-cli
-
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const {VueLoaderPlugin} = require('vue-loader')
-const isProduction = process.env.NODE_ENV == 'production';
-
-
-const stylesHandler = 'style-loader';
+const {VueLoaderPlugin} = require('vue-loader');
+const ProgressBarWebpackPlugin = require('progress-bar-webpack-plugin');
 
 const extractCss = {
-    loader: MiniCssExtractPlugin.loader, // mini-css-extract-plugin是将css打包成独立的文件的插件
+    loader: MiniCssExtractPlugin.loader, //将css打包成独立的文件的插件
     options: {
         publicPath: '../' // 设置publicPath，这样css引用的背景图url就会以css所在的文件为基础
     }
-}
+};
 
 const config = {
     entry: './src/index.ts',
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, '../dist'),
         filename: 'index.js',
-        libraryTarget: 'umd',
         clean: true,
-    },
-    devServer: {
-        open: true,
-        host: 'localhost',
+        library: {
+            name: 'CloudpivotBpmn',
+            type: 'umd',
+        }
     },
     module: {
         rules: [
@@ -47,7 +40,7 @@ const config = {
                       {
                         loader: 'ts-loader',
                         options: {
-                          appendTsSuffixTo: [/\.vue$/] // vue文件加上ts
+                          appendTsSuffixTo: [/\.vue$/]
                         }
                       }
                 ]
@@ -64,12 +57,12 @@ const config = {
             //     test: /\.(svg|png|jpg|gif)$/i,
             //     type: 'asset/resource', 单独输出
             //     generator: {
-            //         //图片路径，存放在dist/imgs/原名+8位hash+后缀
+            //         //图片路径，存放在dist/imgs/原名+后缀
             //         filename: 'imgs/[name][ext]'
             //     }
             // },
             {
-                test:/\.(jpg|jpeg|png|gif)$/,
+                test:/\.(jpg|jpeg|png|gif|svg)$/,
                 type:"asset", // 行内输出
                 //解析
                 parser: {
@@ -79,10 +72,8 @@ const config = {
                   }
                 },
                 generator:{ 
-                  //与output.assetModuleFilename是相同的,这个写法引入的时候也会添加好这个路径
-                  filename:'img/[name].[hash:6][ext]',
-                  //打包后对资源的引入，文件命名已经有/img了
-                  publicPath:'./'
+                  filename:'imgs/[name][ext]',
+                  publicPath:'../'
                 },
               },
             {
@@ -90,7 +81,8 @@ const config = {
                 type: 'asset/resource',
                 generator: {
                     //字体路径
-                    filename: 'font/[name][ext]'
+                    filename: 'font/[name][ext]',
+                    // publicPath:'..'
                 }
             },
         ],
@@ -101,36 +93,14 @@ const config = {
         new MiniCssExtractPlugin({
             filename: 'css/main.css'
         }),
-        // new ExtractTextPlugin({
-        // filename: 'css/[name].[hash].css',
-        // allChunks: true,
-        // }),
-        new HtmlWebpackPlugin({
-            template: 'index.html',
-        }),
-
-        // Add your plugins here
-        // Learn more about plugins from https://webpack.js.org/configuration/plugins/
+        new ProgressBarWebpackPlugin()
     ],
     resolve: {
         alias: {
-            "@": path.resolve(__dirname, "./src/"),
-            "@assets": path.resolve(__dirname, "./src/assets/"),
-            "@mixins": path.resolve(__dirname, "./src/mixins/"),
-            "@components": path.resolve(__dirname, "./src/components/"),
-            "@images": path.resolve(__dirname, "./src/assets/images/")
+            '@': path.resolve('src'),
         },
-        extensions: ['.tsx', '.ts', '.jsx', '.js', '...'],
+        extensions: ['.tsx', '.ts', '.jsx', '.js', '.vue', '...'],
     },
 };
 
-module.exports = () => {
-    if (isProduction) {
-        config.mode = 'production';
-        
-        
-    } else {
-        config.mode = 'development';
-    }
-    return config;
-};
+module.exports = config;

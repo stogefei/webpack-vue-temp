@@ -1,26 +1,59 @@
 {
-  "name": "my-webpack-project",
+  "name": "cloudpivot-bpmn",
   "version": "1.0.0",
-  "description": "My webpack project",
+  "description": "bpmn流程设计器",
   "main": "src/index.ts",
+  "keywords": [
+    "bpmn",
+    "cloudpivot-bpmn"
+  ],
+  "files": [
+    "dist",
+    "lib"
+  ],
   "scripts": {
     "cz": "npx git-cz",
-    "build": "webpack --mode=production --node-env=production --watch",
-    "build:dev": "webpack --mode=development",
-    "build:prod": "webpack --mode=production --node-env=production",
-    "watch": "webpack --watch",
-    "serve": "webpack serve"
+    "build:dev": "webpack --config ./build/webpack.dev.js --watch",
+    "build:prod": "webpack  --config ./build/webpack.prod.js --node-env=production",
+    "build:analyze": "webpack --config ./build/webpack.dev.js --analyze"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "zhuaofei",
+  "license": "MIT",
   "dependencies": {
-    "core-js": "^3.20.2",
-    "vue-class-component": "^7.2.3",
-    "vue-property-decorator": "^9.1.2"
+    "bpmn-js": "^17.8.2",
+    "bpmn-js-properties-panel": "^5.17.1",
+    "bpmn-js-bpmnlint": "0.21.0",
+    "bpmn-js-color-picker": "0.6.0",
+    "bpmn-js-connectors-extension": "^0.4.6",
+    "bpmn-js-token-simulation": "^0.34.2",
+    "bpmn-moddle": "^9.0.1",
+    "bpmnlint": "8.3.2",
+    "camunda-bpmn-moddle": "^7.0.1",
+    "camunda-bpmn-js-behaviors": "^1.3.0",
+    "@bpmn-io/properties-panel": "^3.21.0",
+    "@octokit/core": "^6.1.2",
+    "diagram-js": "^14.7.1",
+    "diagram-js-accordion-palette": "^1.3.2",
+    "diagram-js-context-pad": "^1.1.0",
+    "diagram-js-grid-bg": "^1.1.0",
+    "diagram-js-minimap": "^5.1.0",
+    "ids": "^1.0.0",
+    "min-dash": "^4.1.1",
+    "min-dom": "^4.1.0",
+    "didi": "^9.0.2",
+    "pinia": "2.1.4",
+    "tiny-svg": "^3.0.1",
+    "lodash.debounce": "^4.0.8",
+    "zeebe-bpmn-moddle": "^1.1.0",
+    "tailwindcss": "^3.4.4"
   },
   "devDependencies": {
-    "typescript": "~4.1.6",
+    "core-js": "^3.20.2",
+    "vue-class-component": "^7.2.3",
+    "vue-property-decorator": "^9.1.2",
+    "typescript": "~4.9.5",
     "ts-loader": "^9.5.1",
+    "@h3/antd-vue": "1.6.3",
     "@typescript-eslint/eslint-plugin": "^4.18.0",
     "@typescript-eslint/parser": "^4.18.0",
     "@babel/core": "^7.22.10",
@@ -69,7 +102,11 @@
     "eslint-plugin-vue": "^6.0.0",
     "clean-webpack-plugin": "^4.0.0",
     "mini-css-extract-plugin": "^2.9.0",
-    "html-webpack-plugin": "~5.6.0"
+    "html-webpack-plugin": "~5.6.0",
+    "webpack-merge": "~5.10.0",
+    "progress-bar-webpack-plugin": "^2.1.0",
+    "measure-webpack-plugin": "^0.0.2",
+    "css-minimizer-webpack-plugin": "^7.0.0"
   },
   "lint-staged": {
     "packages/**/*.{js,vue,ts,tsx,jsx}": [

@@ -48,5 +48,5 @@ module.exports = {
       '.json',
     ],
   },
-  ignorePatterns: ["**/iconfont.js", "**/businessIconFont.js","**/kindeditor-all-min.js","**/prettify.js","**/kindeditor-all.js","**/multiimage.js", "**/worker.host.js"]
+  ignorePatterns: []
 };
