@@ -1,15 +1,7 @@
-# 🚀 Welcome to your new awesome project!
+# 🚀 webpack打包一个vue组件
 
-This project has been created using **webpack-cli**, you can now run
+### 基于webpack5 vue2.7.14
 
-```
-npm run build
-```
+### 支持ts tsx语法 
 
-or
-
-```
-yarn build
-```
-
-to bundle your application
+    支持 render

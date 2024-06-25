@@ -4,7 +4,7 @@
   "description": "My webpack project",
   "main": "src/index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "cz": "npx git-cz",
     "build": "webpack --mode=production --node-env=production --watch",
     "build:dev": "webpack --mode=development",
     "build:prod": "webpack --mode=production --node-env=production",
@@ -70,5 +70,27 @@
     "clean-webpack-plugin": "^4.0.0",
     "mini-css-extract-plugin": "^2.9.0",
     "html-webpack-plugin": "~5.6.0"
+  },
+  "lint-staged": {
+    "packages/**/*.{js,vue,ts,tsx,jsx}": [
+        "prettier --write",
+        "eslint --fix"
+      ]
+  },
+  "husky": {
+      "hooks": {
+          "pre-commit": [
+              "lint-staged"
+          ],
+          "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+      }
+  },
+  "config": {
+      "commitizen": {
+          "path": "cz-customizable"
+      },
+      "cz-customizable": {
+          "config": "./config/cz-customizable-config-standard.js"
+      }
   }
 }
