@@ -1,6 +1,15 @@
 module.exports = {
   presets: [
     '@babel/preset-env',
-    ['@vue/app']
+    [
+      '@vue/app',
+      {
+        jsx: {
+          compositionAPI: true,
+        },
+      },
+    ],
   ],
+  plugins: [
+],
 };

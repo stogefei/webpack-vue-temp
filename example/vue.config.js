@@ -3,4 +3,13 @@ module.exports = {
   filenameHashing: true,
   productionSourceMap: false,
   lintOnSave: false,
+  css: {
+    loaderOptions: {
+      less: {
+        lessOptions: {
+          javascriptEnabled: true,
+        },
+      },
+    },
+  },
 };

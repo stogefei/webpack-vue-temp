@@ -1,23 +1,29 @@
-import { Component, Vue } from 'vue-property-decorator';
-import {Icon} from'@h3/antd-vue';
+import { defineComponent, ref, h } from 'vue'
+import { Message }from 'element-ui'
+import Toool from'./toolbar/index';
 import Canvas from'./canvas/index';
 const prefixCls: string = 'cloudpivot-bpmn';
-@Component({
+const Bpmn = defineComponent({
+  inheritAttrs: false,
   name: prefixCls,
-  components: {
-    AIcon: Icon,
-    Canvas,
-  }
-})
-export default class Design extends Vue {
+  setup() {
+    window.__messageBox = Message;
+    const processXml = ref<string | undefined>(undefined)
+    return {
+      processXml,
+    }
+  },
+
   render () {
     return (
       <div class={prefixCls}>
         <div class="main-content">
-          <Canvas/>
+          <Toool/>
+          <Canvas xml={this.processXml}/>
         </div>
       </div>
     )
   }
-}
+})
 
+export default Bpmn

@@ -1,50 +1,49 @@
+import { markRaw, Ref } from 'vue'
 import Modeler from "bpmn-js/lib/Modeler";
 import EventEmitter from "../../utils/EventEmitter";
-import { catchError } from "../../utils/printCatch";
-import { unObserver } from "../../utils/tool";
 import EnhancementContextmenu from '../../additional-functions/EnhancementContextmenu'
 
-export default function (designerDom, moduleAndExtensions, context) {
-  const options = {
-    container: designerDom,
-    additionalModules: moduleAndExtensions[0] || [],
-    moddleExtensions: moduleAndExtensions[1] || {},
-    ...moduleAndExtensions[2]
-  };
+import type { BaseViewerOptions } from 'bpmn-js/lib/BaseViewer'
+import type { ModulesAndModdles } from './moduleAndExtensions'
 
-  // 清除旧 modeler
-  context.getModeler && context.getModeler.destroy();
-  // context.$store.commit("clearBpmnState");
-  // console.log(options, 'options===');
-  const modeler = new Modeler(options);
+import modelerStore from '@/store/modeler'
+export default async function (
+  designer: HTMLElement | null,
+  modelerModules: ModulesAndModdles,
+  context
+) {
+  const store = modelerStore()
 
-  // context.$store.commit("setModeler", modeler);
+  const options: BaseViewerOptions = {
+    container: designer as HTMLElement,
+    additionalModules: modelerModules[0] || [],
+    moddleExtensions: modelerModules[1] || {},
+    ...modelerModules[2]
+  }
+  if (store.getModeler) {
+    // 清除旧 modeler
+    store.getModeler.destroy()
+    await store.setModeler(undefined)
+  }
 
-  EventEmitter.emit("modeler-init", modeler);
+  const modeler: Modeler = new Modeler(options)
+
+  await store.setModeler(markRaw(modeler))
+
+
+  EventEmitter.emit('modeler-init', modeler)
+
   EnhancementContextmenu(modeler)
-  context.events?.forEach((event) => {
-    modeler.on(event, function (eventObj:any) {
-      let eventName = event.replace(/\./g, "-");
-      let element = eventObj ? eventObj.element : null;
-      context.$emit(eventName, unObserver({ element, eventObj }));
-    });
-  });
 
-  modeler.on("commandStack.changed", async (event) => {
+  modeler.on('commandStack.changed', async (event) => {
     try {
-      const { xml } = await modeler.saveXML({ format: true });
+      const { xml } = await modeler.saveXML({ format: true })
 
-      context.$emit("update:xml", xml);
-      context.$emit("command-stack-changed", event);
+      context.$emit('update:xml', xml)
+      context.$emit('command-stack-changed', event)
     } catch (error) {
-      catchError(error);
+      console.error(error)
     }
-  });
-
-  // 右键菜单
-  // EnhancementContextmenu(modeler, context.getEditor);
-
-  console.log(modeler, 'modeler');
-
-  return modeler;
+  })
+  console.log(modeler, 'modeler==')
 }

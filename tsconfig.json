@@ -18,25 +18,36 @@
     "declarationDir": "./dist/types",
     "outDir": "./dist", // 输出目录
     "sourceMap": true,
-    "baseUrl": ".",
+    "baseUrl": "./",
     // "rootDir": ".",
     "removeComments":false,
     "types": [],
     "paths": {
+      "@/*": [
+        "src/*"
+      ],
+      "types/*": [
+        "types/*"
+      ],
       "tslib" : ["node_modules/tslib/tslib.d.ts"],
     },
     "lib": ["ES2020", "DOM", "DOM.Iterable"]
   },
   "include": [
-    "./src/**/*.ts",
-    "./src/**/*.d.ts",
-    "./src/**/*.vue",
-    "./src/**/*.json",
-    "./src/**/*.tsx",
-    "./src/**/*.tsx",
-    "./src/index.ts",
-    "./src/**/*",
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.vue",
+    "src/**/*.json",
+    "src/**/*.tsx",
+    "src/**/*.tsx",
+    "src/index.ts",
+    "src/**/*",
     "src/-vue.d.ts",
 ],
-  "files": ["src/index.ts"]
+  "exclude": [
+    "node_modules",
+    "dist",
+    "public",
+    "docs"
+  ]
 }

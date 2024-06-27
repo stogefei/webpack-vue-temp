@@ -1,22 +1,52 @@
 // babel.config.js
-module.exports = {
+// module.exports = {
+//     presets: [
+//       [
+//         '@vue/cli-plugin-babel/preset',
+//         {
+//           jsx: {
+//             compositionAPI: true,
+//           },
+//         }
+//       ],
+//       ['@vue/babel-preset-jsx', { compositionAPI: true }]
+//     ],
+//     plugins: [
+//       ['@babel/plugin-transform-typescript', { isTSX: true }]
+      
+//     ]
+//   }
+  module.exports = {
+    compact: false,
     presets: [
+      '@babel/preset-env',
       [
-        '@vue/cli-plugin-babel/preset',
+        '@vue/app',
         {
           jsx: {
             compositionAPI: true,
           },
-        }
-      ],
-      ['@vue/babel-preset-jsx', { compositionAPI: true }]
+        },
+      ]
     ],
     plugins: [
-      ['@babel/plugin-transform-typescript', { isTSX: true }]
-      
-    ]
-  }
-
+      ['@babel/plugin-transform-typescript', { isTSX: true }],
+      [
+        '@babel/plugin-transform-runtime',
+        {
+          absoluteRuntime: false,
+          corejs: 3,
+        },
+      ],
+      [
+        "component",
+        {
+          "libraryName": "element-ui",
+          "styleLibraryName": "theme-chalk"
+        }
+      ]
+    ],
+  };
   // module.exports = {
 //   presets: [
 //     [

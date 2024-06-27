@@ -1,10 +1,11 @@
 
-import Design from './design/index'
-// import Design from './design/test.vue'
+import Bpmn from './design/index'
+
+export * from './store/index'
 
 // @ts-ignore
-Design.install = function (Vue) {
-  Vue.component(Design.name, Design);
+Bpmn.install = function (Vue) {
+  Vue.component(Bpmn.name, Bpmn);
 };
 
-export default Design;
+export default Bpmn;

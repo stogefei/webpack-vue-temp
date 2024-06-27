@@ -5,12 +5,11 @@ const {VueLoaderPlugin} = require('vue-loader');
 const ProgressBarWebpackPlugin = require('progress-bar-webpack-plugin');
 
 const extractCss = {
-    loader: MiniCssExtractPlugin.loader, //将css打包成独立的文件的插件
-    options: {
-        publicPath: '../' // 设置publicPath，这样css引用的背景图url就会以css所在的文件为基础
-    }
+  loader: MiniCssExtractPlugin.loader, //将css打包成独立的文件的插件
+  options: {
+      publicPath: '../' // 设置publicPath，这样css引用的背景图url就会以css所在的文件为基础
+  }
 };
-
 const config = {
     entry: './src/index.ts',
     output: {
@@ -53,14 +52,6 @@ const config = {
                 test: /\.css$/i,
                 use: [extractCss, 'css-loader', 'postcss-loader'],
             },
-            // {
-            //     test: /\.(svg|png|jpg|gif)$/i,
-            //     type: 'asset/resource', 单独输出
-            //     generator: {
-            //         //图片路径，存放在dist/imgs/原名+后缀
-            //         filename: 'imgs/[name][ext]'
-            //     }
-            // },
             {
                 test:/\.(jpg|jpeg|png|gif|svg)$/,
                 type:"asset", // 行内输出
@@ -91,13 +82,14 @@ const config = {
         new CleanWebpackPlugin(),
         new VueLoaderPlugin(),
         new MiniCssExtractPlugin({
-            filename: 'css/main.css'
-        }),
-        new ProgressBarWebpackPlugin()
+          filename: 'css/main.css'
+      }),
+        new ProgressBarWebpackPlugin(),
     ],
     resolve: {
         alias: {
-            '@': path.resolve('src'),
+           '@': path.resolve(__dirname, '../src'),
+           'types': path.resolve(__dirname, '../src/types'),
         },
         extensions: ['.tsx', '.ts', '.jsx', '.js', '.vue', '...'],
     },
