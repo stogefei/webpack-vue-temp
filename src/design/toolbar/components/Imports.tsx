@@ -4,7 +4,7 @@ import { pinia } from '@/store/index'
 import modeler from '@/store/modeler'
 
 const Imports = defineComponent({
-  name: 'Imports',
+  name: 'ImportTools',
   components: {
     EButton: Button,
   },

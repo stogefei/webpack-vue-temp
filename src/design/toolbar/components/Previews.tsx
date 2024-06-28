@@ -5,7 +5,7 @@ import {pinia} from '@/store/index';
 import hljs from '@/highlight/index';
 import { Button, Popover, Dialog } from 'element-ui'
 const Previews = defineComponent({
-  name: 'Previews',
+  name: 'PreviewTools',
   components: {
     EButton: Button,
     ElPopover: Popover,
@@ -92,10 +92,10 @@ const Previews = defineComponent({
           <span slot="reference">预览文件</span>
           {content}
         </el-popover>
-        <el-dialog 
-          onClose={this.close} 
+        <el-dialog
+          onClose={this.close}
           onOpen={this.open}
-          title="预览文件" 
+          title="预览文件"
           visible={this.codeModelVisible}
           width="72vw"
           append-to-body destroy-on-close>

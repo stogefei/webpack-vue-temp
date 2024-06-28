@@ -29,15 +29,12 @@
    </el-popover>
 </template>
 <script lang="javascript">
-import { Popover, Tooltip } from 'element-ui'
+import { Popover } from 'element-ui'
 import EventEmitter from '@/utils/EventEmitter'
-// import { Element } from 'diagram-js/lib/model/Types'
 import { customTranslate } from '@/additional-modules/Translate'
 import BpmnReplaceOptions from '@/utils/BpmnReplaceOptions'
 import { isAppendAction } from '@/utils/BpmnDesignerUtils';
 import contextMenuActions from './contextMenuActions';
-import { createPopper } from '@popperjs/core'
-import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 export default {
   name: "ContextMenu",
   components: {

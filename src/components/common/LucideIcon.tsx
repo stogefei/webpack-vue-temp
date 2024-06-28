@@ -1,6 +1,6 @@
 
 import { defineComponent, h } from 'vue'
-import { 
+import {
    AlignStartVertical,
    AlignEndVertical,
    AlignCenterVertical,
@@ -11,22 +11,23 @@ import {
    ZoomIn,
    Undo2,
    Redo2,
-   Eraser, 
+   Eraser,
    Map } from 'lucide-vue';
 
 export default defineComponent({
   name: 'LucideIcon',
   components: {
-    AlignStartVertical, 
+    AlignStartVertical,
     AlignEndVertical,
     AlignCenterVertical,
     AlignStartHorizontal,
-    AlignCenterHorizontal, 
+    AlignCenterHorizontal,
     AlignEndHorizontal,ZoomOut,
     ZoomIn,
     Undo2,
     Redo2,
     Eraser,
+    // eslint-disable-next-line vue/no-reserved-component-names
     Map
   },
   props: {
@@ -52,8 +53,8 @@ export default defineComponent({
     }
   },
   setup(props) {
-    return { 
-      name: props.name,  
+    return {
+      tagName: props.name,
       iconProps: {
         size: props.size,
         color: props.color,
@@ -62,6 +63,6 @@ export default defineComponent({
      }
   },
   render () {
-    return h(this.name, { props: {...this.iconProps} })
+    return h(this.tagName, { props: {...this.iconProps} })
   }
 })

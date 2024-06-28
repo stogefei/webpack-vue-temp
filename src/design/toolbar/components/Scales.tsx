@@ -4,10 +4,10 @@ import LucideIcon from '@/components/common/LucideIcon'
 import EventEmitter from '@/utils/EventEmitter'
 import type Modeler from 'bpmn-js/lib/Modeler'
 import type Canvas from 'diagram-js/lib/core/Canvas'
-import CanvasEvent from 'diagram-js/lib/core/EventBus'
+// import CanvasEvent from 'diagram-js/lib/core/EventBus'
 
 const Scales = defineComponent({
-  name: 'Scales',
+  name: 'ScaleTools',
   components: {
     EButton: Button,
     EButtonGroup: ButtonGroup,

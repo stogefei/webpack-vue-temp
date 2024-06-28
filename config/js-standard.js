@@ -5,7 +5,7 @@ module.exports = {
       jsx: true,
     },
     sourceType: 'module',
-    parser: require.resolve('babel-eslint'),
+    parser: require.resolve('@babel/eslint-parser'),
   },
 
   env: {

@@ -7,7 +7,7 @@ import { createNewDiagram } from '@/utils'
 import LucideIcon from '@/components/common/LucideIcon'
 
 const Commands = defineComponent({
-  name: 'Commands',
+  name: 'CommandTools',
   components: {
     EButton: Button,
     EButtonGroup: ButtonGroup,

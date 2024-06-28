@@ -7,7 +7,7 @@ import EventEmitter from '@/utils/EventEmitter'
 import LucideIcon from '@/components/common/LucideIcon'
 
 const Aligns = defineComponent({
-  name: 'Aligns',
+  name: 'AlignTools',
   components: {
     EButton: Button,
     EButtonGroup: ButtonGroup,

@@ -7,7 +7,6 @@ import { customTranslate } from '@/additional-modules/Translate'
 import BpmnReplaceOptions from '@/utils/BpmnReplaceOptions'
 import { isAppendAction } from '@/utils/BpmnDesignerUtils';
 import contextMenuActions from './contextMenuActions';
-import { createPopper } from '@popperjs/core'
 const ContextMenu = defineComponent({
   name: 'Aligns',
   components: {
@@ -25,9 +24,9 @@ const ContextMenu = defineComponent({
     const isAppend = ref<boolean>(false)
     const popperRef = ref<HTMLElement>(null)
     const contextMenuTitle = ref<string>('创建元素')
-  
+
     const { appendAction, replaceAction } = contextMenuActions()
-  
+
     const triggerAction = (entry, event) => {
       try {
         isAppend.value
@@ -38,11 +37,11 @@ const ContextMenu = defineComponent({
         console.error(e)
       }
     }
-  
+
     const initEventCallback = async(event: MouseEvent, element?: Element) => {
       x.value = event.clientX
       y.value = event.clientY
-      
+
       mouseEvent = event
       currentElement = element || null
       isAppend.value = isAppendAction(element)
@@ -55,12 +54,8 @@ const ContextMenu = defineComponent({
         // dcPopover.value.doShow()
       });
       showPopover.value = true;
-      const referenceRef = document.querySelector('body');
-      createPopper(referenceRef, popperRef.value, {
-        modifiers: [],
-      });
     }
-  
+
     const closePopover = () => {
       showPopover.value = false
     };
@@ -89,8 +84,8 @@ const ContextMenu = defineComponent({
   },
   render () {
     console.log(this.showPopover, 'this.showPopover');
-    const tag = this.showPopover ?
-    <div class="bpmn-context-menu" ref="popperRef">
+    const tag = this.showPopover
+    ? <div class="bpmn-context-menu" ref="popperRef">
       <div class="context-menu_header">{ this.contextMenuTitle }</div>
       <div class="context-menu_body">
         {

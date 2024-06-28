@@ -7,13 +7,13 @@ import { EditorSettings } from '../types/editor/settings'
 import { defaultSettings } from '@/config'
 const prefixCls: string = 'cloudpivot-bpmn';
 const Bpmn = defineComponent({
-  inheritAttrs: false,
   name: prefixCls,
   components: {
-    Canvas: Canvas,
+    CanvasCenter: Canvas,
     Toool: Toool,
     ContextMenu: ContextMenu,
   },
+  inheritAttrs: false,
   setup() {
     window.__messageBox = Message;
     const processXml = ref<string | undefined>(undefined)
@@ -46,9 +46,9 @@ const Bpmn = defineComponent({
     return (
       <div class={prefixCls}>
         <div class="main-content">
-          <Toool/>
-          <Canvas xml={this.processXml}/>
-          <ContextMenu/>
+          <toool/>
+          <canvas-center xml={this.processXml}/>
+          <context-menu/>
         </div>
       </div>
     )
