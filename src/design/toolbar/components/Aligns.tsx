@@ -1,4 +1,4 @@
-import { computed, ComputedRef, defineComponent } from 'vue'
+import { computed, ComputedRef, defineComponent, h } from 'vue'
 import { Button, ButtonGroup, Popover, Icon } from 'element-ui'
 import Modeler from 'bpmn-js/lib/Modeler'
 import Selection from 'diagram-js/lib/features/selection/Selection'
@@ -16,7 +16,6 @@ const Aligns = defineComponent({
     LucideIcon,
   },
   setup() {
-
     const buttons: ComputedRef<{ name: string; key: string; icon: string }[]> = computed(() => {
       return [
         { name: '左对齐', key: 'left', icon: 'AlignStartVertical' },
@@ -33,6 +32,7 @@ const Aligns = defineComponent({
     let align: any = null
 
     EventEmitter.on('modeler-init', (modeler: Modeler) => {
+      console.log(modeler, 'modeler==');
       modeling = modeler.get('modeling')
       selection = modeler.get('selection')
       align = modeler.get('alignElements')

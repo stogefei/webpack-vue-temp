@@ -3,6 +3,7 @@ import { getRawType, notNull } from './tools'
 const isArray = (obj) => getRawType(obj) === 'array'
 const isNullOrUndefined = (obj) => !notNull(obj)
 
+// 发布订阅
 class EventEmitter {
   static _events: { [key: string]: Function[] } = {}
 

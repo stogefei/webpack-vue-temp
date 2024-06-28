@@ -1,7 +1,8 @@
 // Generated using webpack-cli https://github.com/webpack/webpack-cli
 const webpack = require('webpack');
 const path = require('path');
-const MeasureWebpackPlugin = require('measure-webpack-plugin')
+const MeasureWebpackPlugin = require('measure-webpack-plugin'); // 打包分析
+const StatsReportPlugin = require("webpack-stats-report").StatsReportPlugin; // 打包分析
 const { merge } = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const commonConfig = require('./webpack.common'); // 引入共用配置
@@ -33,11 +34,15 @@ const baseConfig = {
         // port: 9888,
     },
     plugins: [
-        new HtmlWebpackPlugin({
-            template: 'index.html',
-        }),
+        // new HtmlWebpackPlugin({
+        //     template: 'index.html',
+        // }),
         // new webpack.HotModuleReplacementPlugin(),
-        new MeasureWebpackPlugin()
+        // new MeasureWebpackPlugin(),
+        // new StatsReportPlugin({ 
+        //     title: "打包分析报告",
+        //     output: "./dist/stats-report.html"
+        // })
     ],
 };
 module.exports = () => {

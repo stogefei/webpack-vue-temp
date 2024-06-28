@@ -1,9 +1,34 @@
 
-import { computed, defineComponent, h } from 'vue'
-import * as icons from 'lucide-vue'
+import { defineComponent, h } from 'vue'
+import { 
+   AlignStartVertical,
+   AlignEndVertical,
+   AlignCenterVertical,
+   AlignStartHorizontal,
+   AlignCenterHorizontal,
+   AlignEndHorizontal,
+   ZoomOut,
+   ZoomIn,
+   Undo2,
+   Redo2,
+   Eraser, 
+   Map } from 'lucide-vue';
 
 export default defineComponent({
   name: 'LucideIcon',
+  components: {
+    AlignStartVertical, 
+    AlignEndVertical,
+    AlignCenterVertical,
+    AlignStartHorizontal,
+    AlignCenterHorizontal, 
+    AlignEndHorizontal,ZoomOut,
+    ZoomIn,
+    Undo2,
+    Redo2,
+    Eraser,
+    Map
+  },
   props: {
     name: {
       type: String,
@@ -27,17 +52,16 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const icon:any = computed(() => {
-      return icons[props.name];
-    })
     return { 
-      icon, 
-      size: props.size,
-      color: props.color,
-      defaultClass: props.defaultClass
+      name: props.name,  
+      iconProps: {
+        size: props.size,
+        color: props.color,
+        defaultClass: props.defaultClass
+      }
      }
   },
   render () {
-    return h(this.icon, { props: {size: this.size, color: this.color, defaultClass: this.defaultClass} })
+    return h(this.name, { props: {...this.iconProps} })
   }
 })

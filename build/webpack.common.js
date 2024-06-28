@@ -90,8 +90,15 @@ const config = {
         alias: {
            '@': path.resolve(__dirname, '../src'),
            'types': path.resolve(__dirname, '../src/types'),
+           'vue$': 'vue/dist/vue.esm.js'
         },
         extensions: ['.tsx', '.ts', '.jsx', '.js', '.vue', '...'],
+    },
+    externals: {
+      // bpmn: 'bpmn-js',
+      // element: 'element-ui',
+      // lucide: 'lucide-vue',
+      // vue: 'vue',
     },
 };
 
