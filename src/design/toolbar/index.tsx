@@ -7,6 +7,7 @@ import Aligns from './components/Aligns';
 import Scales from './components/Scales';
 import Commands from './components/Commands';
 import ExternalTools from './components/ExternalTools';
+import Save from './components/save';
 const prefixCls: string = 'cloudpivot-bpmn-tool';
 @Component({
   name: prefixCls,
@@ -19,6 +20,7 @@ export default class Toool extends Vue {
     return (
       <div class={prefixCls}>
         <e-button-group>
+          <Save></Save>
           <Imports></Imports>
           <Exports></Exports>
           <Previews></Previews>

@@ -53,7 +53,7 @@ const config = {
                 use: [extractCss, 'css-loader', 'postcss-loader'],
             },
             {
-                test:/\.(jpg|jpeg|png|gif|svg)$/,
+                test:/\.(jpg|jpeg|png|gif)$/,
                 type:"asset", // 行内输出
                 //解析
                 parser: {
@@ -67,6 +67,29 @@ const config = {
                   publicPath:'../'
                 },
               },
+            //   {
+            //     test: /\.svg$/i,
+            //     type: 'asset/resource',
+            //     generator: {
+            //       filename: 'bpmn-icons/[name][ext]',
+            //   }
+            // },
+            // {
+            //   test: /\.svg$/,
+            //   type: 'asset/resource',
+            //   loader: 'vue-svg-loader'
+            // },
+            {
+              test: /\.svg$/,
+              loader: 'svg-sprite-loader',
+              include: [
+                // 指定svg图标的路径
+                path.resolve('../src/bpmn-icons/svg'),
+              ],
+              options: {
+                symbolId: "icon-[name]",
+              },
+            },
             {
                 test: /\.(woff|woff2|eot|ttf|otf|)$/,
                 type: 'asset/resource',

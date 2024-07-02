@@ -1,10 +1,12 @@
-import { defineComponent, ref, h, computed} from 'vue'
-import { Message }from 'element-ui'
+import { defineComponent, ref, h, computed} from 'vue';
+import { Message }from 'element-ui';
 import Toool from'./toolbar/index';
-import ContextMenu from '@/components/ContextMenu/index.vue'
+import ContextMenu from '@/components/ContextMenu/index.vue';
+import Panel from '@/components/panel/index.vue';
 import Canvas from'./canvas/index';
-import { EditorSettings } from '../types/editor/settings'
-import { defaultSettings } from '@/config'
+import { EditorSettings } from '../types/editor/settings';
+import { defaultSettings } from '@/config';
+import '../styles/index.less';
 const prefixCls: string = 'cloudpivot-bpmn';
 const Bpmn = defineComponent({
   name: prefixCls,
@@ -12,6 +14,7 @@ const Bpmn = defineComponent({
     CanvasCenter: Canvas,
     Toool: Toool,
     ContextMenu: ContextMenu,
+    Panel: Panel,
   },
   inheritAttrs: false,
   setup() {
@@ -35,6 +38,7 @@ const Bpmn = defineComponent({
       processXml,
       computedClasses,
       showToolbar,
+      customPenal,
     }
   },
   mounted() {
@@ -45,11 +49,16 @@ const Bpmn = defineComponent({
   render () {
     return (
       <div class={prefixCls}>
+        <toool/>
         <div class="main-content">
-          <toool/>
           <canvas-center xml={this.processXml}/>
-          <context-menu/>
+          {this.customPenal ? (
+                  <Panel></Panel>
+                ) : (
+                  <div class="camunda-penal" id="camunda-penal"></div>
+                )}
         </div>
+        <context-menu/>
       </div>
     )
   }

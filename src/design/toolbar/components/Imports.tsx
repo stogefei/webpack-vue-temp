@@ -37,8 +37,8 @@ const Imports = defineComponent({
   },
   render () {
     return (
-        <e-button size="mini" type="primary" onClick={this.openImportWindow}>
-          打开文件
+        <e-button size="mini" type="primary" icon="el-icon-folder" onClick={this.openImportWindow}>
+          打开
           <input
           type="file"
           ref='importRef'

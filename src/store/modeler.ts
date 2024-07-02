@@ -62,7 +62,6 @@ export default defineStore('modeler', {
             undefined;
       }
     },
-
     setElement(element: BpmnElement | undefined) {
       this.activeElement = element;
       this.activeElementId = element?.id;

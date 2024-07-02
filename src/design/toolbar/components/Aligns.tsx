@@ -4,7 +4,7 @@ import Modeler from 'bpmn-js/lib/Modeler'
 import Selection from 'diagram-js/lib/features/selection/Selection'
 import Modeling from 'bpmn-js/lib/features/modeling/Modeling.js'
 import EventEmitter from '@/utils/EventEmitter'
-import LucideIcon from '@/components/common/LucideIcon'
+import LucideIcon from '@/components/common/LucideIcon.vue'
 
 const Aligns = defineComponent({
   name: 'AlignTools',

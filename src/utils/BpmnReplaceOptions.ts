@@ -65,7 +65,7 @@ export default function (element?: Element) {
       return replaceOptions.END_EVENT.filter((entry:any) => {
         const target = entry.target
         if (
-          target.eventDefinitionType == 'bpmn:CancelEventDefinition' &&
+          target.eventDefinitionType === 'bpmn:CancelEventDefinition' &&
           !is(businessObject.$parent, 'bpmn:Transaction')
         ) {
           return false
@@ -79,13 +79,13 @@ export default function (element?: Element) {
       return replaceOptions.BOUNDARY_EVENT.filter((entry:any) => {
         const target = entry.target
         if (
-          target.eventDefinitionType == 'bpmn:CancelEventDefinition' &&
+          target.eventDefinitionType === 'bpmn:CancelEventDefinition' &&
           !is(businessObject.attachedToRef, 'bpmn:Transaction')
         ) {
           return false
         }
         const cancelActivity = target.cancelActivity !== false
-        const isCancelActivityEqual = businessObject.cancelActivity == cancelActivity
+        const isCancelActivityEqual = businessObject.cancelActivity === cancelActivity
         return (
           differentType(element)(entry) ||
           (!differentType(element)(entry) && !isCancelActivityEqual)

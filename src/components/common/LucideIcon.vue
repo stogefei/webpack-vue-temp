@@ -1,5 +1,8 @@
+<template>
+  <component :is="icon" v-bind="$props" />
+</template>
 
-import { defineComponent, h } from 'vue'
+<script>
 import {
    AlignStartVertical,
    AlignEndVertical,
@@ -12,10 +15,17 @@ import {
    Undo2,
    Redo2,
    Eraser,
-   Map } from 'lucide-vue';
-
-export default defineComponent({
-  name: 'LucideIcon',
+   ChevronsRight,
+   ChevronsLeft,
+   Map,
+   File,
+   Download,
+   Save,
+   Eye,
+   Box
+   } from 'lucide-vue';
+export default {
+  name: "LucideIcon",
   components: {
     AlignStartVertical,
     AlignEndVertical,
@@ -28,7 +38,14 @@ export default defineComponent({
     Redo2,
     Eraser,
     // eslint-disable-next-line vue/no-reserved-component-names
-    Map
+    Map,
+    ChevronsRight,
+    ChevronsLeft,
+    File,
+    Download,
+    Save,
+    Eye,
+    Box
   },
   props: {
     name: {
@@ -41,7 +58,7 @@ export default defineComponent({
     },
     color: {
       type: String,
-      default: 'currentColor'
+      default: "currentColor"
     },
     strokeWidth: {
       type: Number,
@@ -49,20 +66,13 @@ export default defineComponent({
     },
     defaultClass: {
       type: String,
-      default: 'lucide-icon'
+      default: "lucide-icon"
     }
   },
-  setup(props) {
-    return {
-      tagName: props.name,
-      iconProps: {
-        size: props.size,
-        color: props.color,
-        defaultClass: props.defaultClass
-      }
-     }
-  },
-  render () {
-    return h(this.tagName, { props: {...this.iconProps} })
+  computed: {
+    icon() {
+      return this.name;
+    }
   }
-})
+};
+</script>

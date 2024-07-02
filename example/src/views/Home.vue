@@ -6,16 +6,18 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import './home.less';
-import CloudpivotBpmn from'../../../dist/index';
+// import CloudpivotBpmn from'../../../dist/index';
+import CloudpivotBpmn from'../../../src/index';
 
 @Component({
   components: {
+    // CloudpivotBpmn: Bpmn,
     CloudpivotBpmn,
   },
 })
 export default class Home extends Vue {}
 </script>
 <style lang="less">
-@import '../../../dist/css/main.css';
+// @import '../../../dist/css/main.css';
+@import './home.less';
 </style>

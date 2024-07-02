@@ -14,6 +14,7 @@ import TokenSimulationModule from 'bpmn-js-token-simulation'
 
 // 自定义扩展部分
 import translate from "../../additional-modules/Translate";
+// import translateElment from "../../additional-modules/Translate";
 import Rules from '../../additional-modules/Rules'
 import AutoPlace from '../../additional-modules/AutoPlace'
 import ElementFactory from '../../additional-modules/ElementFactory'

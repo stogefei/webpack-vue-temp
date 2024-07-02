@@ -1,6 +1,6 @@
 import { defineComponent, ref } from 'vue'
 import { Button, ButtonGroup, Popover } from 'element-ui'
-import LucideIcon from '@/components/common/LucideIcon'
+import LucideIcon from '@/components/common/LucideIcon.vue'
 import EventEmitter from '@/utils/EventEmitter'
 import type Modeler from 'bpmn-js/lib/Modeler'
 import type Canvas from 'diagram-js/lib/core/Canvas'
@@ -58,7 +58,7 @@ const Scales = defineComponent({
             </el-popover>
           </e-button>
           <e-button size="mini" onClick={() => this.zoomReset('fit-viewport')}>
-            <span style="text-align: center; display: inline-block; width: 40px">
+            <span style="text-align: center; display: inline-block; width: 40px;height:14px">
               {Math.floor(this.currentScale * 10) * 10 + '%'}
             </span>
           </e-button>

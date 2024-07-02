@@ -7,7 +7,6 @@ import { createNewDiagram } from "../../utils/index";
 import modulesAndModdle from './moduleAndExtensions'
 import initModeler from "./initModeler";
 import './styles/index.less';
-import '../../styles/tailwind.css';
 const prefixCls: string = 'cloudpivot-bpmn-canvas';
 
 const Designer = defineComponent({
@@ -39,7 +38,7 @@ const Designer = defineComponent({
     return {
       editorSettings,
       designer,
-      xml,
+      xmlTmp: xml,
     };
   },
 
@@ -47,7 +46,7 @@ const Designer = defineComponent({
     const modelerModules = modulesAndModdle(this.editorSettings)
     await nextTick()
     await initModeler(this.designer, modelerModules, this)
-    await createNewDiagram(this.xml, this.editorSettings)
+    await createNewDiagram(this.xmlTmp, this.editorSettings)
   },
 
   render () {

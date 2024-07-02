@@ -1,5 +1,6 @@
 import { defineComponent, ref, nextTick } from 'vue';
 import BpmnModdle from 'bpmn-moddle';
+
 import modeler from '@/store/modeler';
 import {pinia} from '@/store/index';
 import hljs from '@/highlight/index';
@@ -78,20 +79,11 @@ const Previews = defineComponent({
   },
 
   render () {
-    const content = (<div class="button-list_column">
-      <e-button size="mini" plain type="primary" onClick={this.openXMLPreviewModel}>
-        预览为XML
-      </e-button>
-      <e-button size="mini" plain type="primary" onClick={this.openJsonPreviewModel}>
-        预览为JSON
-      </e-button>
-    </div>);
     return (
-      <e-button size="mini" type="primary">
-        <el-popover trigger="hover" popper-class="tool-popper">
-          <span slot="reference">预览文件</span>
-          {content}
-        </el-popover>
+      <e-button size="mini" type="primary" icon="el-icon-view">
+        <span onClick={this.openXMLPreviewModel}>
+            预览
+          </span>
         <el-dialog
           onClose={this.close}
           onOpen={this.open}

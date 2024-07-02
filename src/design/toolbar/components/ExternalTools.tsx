@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
 import { Button, ButtonGroup, Popover } from 'element-ui'
-import LucideIcon from '@/components/common/LucideIcon'
+import LucideIcon from '@/components/common/LucideIcon.vue'
 import modeler from '@/store/modeler'
 import {pinia} from '@/store/index'
 

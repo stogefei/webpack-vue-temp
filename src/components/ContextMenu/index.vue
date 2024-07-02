@@ -14,7 +14,7 @@
         >
         <div class="bpmn-context-menu">
             <div class="context-menu_header">{{ contextMenuTitle }}</div>
-                <div class="context-menu_body">
+              <div class="context-menu_body">
                 <div v-for="item in currentReplaceOptions"
                     :key="item.actionName"
                     class="context-menu_item"
@@ -22,13 +22,13 @@
                 >
                     <i :class="`context-menu_item_icon ${item.className}`"></i>
                     <span>{{ translateCh(item.label) }}</span>
-                </div>
+              </div>
             </div>
         </div>
         <span slot="reference"></span>
    </el-popover>
 </template>
-<script lang="javascript">
+<script>
 import { Popover } from 'element-ui'
 import EventEmitter from '@/utils/EventEmitter'
 import { customTranslate } from '@/additional-modules/Translate'
@@ -78,9 +78,9 @@ export default {
     },
 
     async initEventCallback(event, element) {
-      console.log(event, this.$el.clientWidth);
-      this.x = event.clientX
-      this.y = event.clientY
+      // console.log(event, this.$el.clientWidth);
+      this.x = event.clientX;
+      this.y = event.clientY;
       this._currentElement = element || null;
       this.isAppend = isAppendAction(element);
       this.currentReplaceOptions = BpmnReplaceOptions(element);

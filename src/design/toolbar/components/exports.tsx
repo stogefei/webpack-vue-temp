@@ -1,5 +1,5 @@
 import { defineComponent, VNodeData } from 'vue'
-import { ColorPicker, Popover, DatePicker, Button } from 'element-ui'
+import { Popover, Button } from 'element-ui'
 import { downloadFile, setEncoded } from '@/utils/files'
 import { pinia } from '@/store/index'
 import modeler from '@/store/modeler'
@@ -9,8 +9,6 @@ const Exports = defineComponent({
   components: {
     EButton: Button,
     EPopover: Popover,
-    EDatePicker: DatePicker,
-    EColorPicker: ColorPicker,
   },
   setup() {
     const modelerStore = modeler(pinia)
@@ -74,9 +72,11 @@ const Exports = defineComponent({
       </e-button>
     </div>);
     return (
-        <e-button size="mini" slot="reference" type="primary">
+        <e-button size="mini" slot="reference" type="primary" icon="el-icon-download">
           <e-popover popper-class="tool-popper" trigger="hover">
-          <span slot="reference">导出文件</span>
+          <span slot="reference">
+            <span> 导出</span>
+          </span>
             {content}
           </e-popover>
         </e-button>

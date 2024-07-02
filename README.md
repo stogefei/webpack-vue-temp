@@ -1,6 +1,6 @@
 # 🚀 webpack打包一个vue组件
 
-### 基于webpack5 vue2.7.14
+### 基于webpack5 vue2.7
     typescript v4.9.5
     webpack v5.0
     vue v2.7
@@ -25,7 +25,11 @@
 
     pnpm i
 
+    打包后运行(webpack)
     yarn run serve
+
+    开发模式运行(vite)
+    yarn run dev
 
 ### 最终效果
 
